@@ -6,9 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -29,8 +27,7 @@ public class WebElementsTest {
 	}
 
 	@AfterEach
-	public void after() throws InterruptedException {
-		Thread.sleep(3000);
+	public void after() throws InterruptedException {		
 		driver.quit();
 	}
 	
@@ -102,11 +99,29 @@ public class WebElementsTest {
 		WebElement elementSingle = driver.findElement(By.name("dropdownlist"));
 		Select selectSingle = new Select(elementSingle);
 		
+		assertEquals(10, selectSingle.getOptions().size());
+		
 		selectSingle.selectByIndex(3);		
 		selectSingle.selectByValue("item5");		
 		selectSingle.selectByVisibleText("Item 7");
 		
-		assertEquals("Item 7", selectSingle.getFirstSelectedOption().getText());	
+		assertEquals("Item 7", selectSingle.getFirstSelectedOption().getText());		
+	}
 	
+	@Test
+	public void testSelectMultiple() {
+		WebElement elementMulti = driver.findElement(By.name("multiselectdropdown"));
+		Select selectMulti = new Select(elementMulti);
+		
+		selectMulti.selectByVisibleText("Item 5");
+		selectMulti.selectByVisibleText("Item 8");
+		selectMulti.selectByVisibleText("Item 9");
+		
+		List<WebElement> selectAll = selectMulti.getAllSelectedOptions();
+		assertEquals(3, selectAll.size());
+		
+		assertEquals("Item 5", selectAll.get(0).getText());
+		assertEquals("Item 8", selectAll.get(1).getText());
+		assertEquals("Item 9", selectAll.get(2).getText());
 	}
 }
