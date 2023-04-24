@@ -27,7 +27,8 @@ public class WebElementsTest {
 	}
 
 	@AfterEach
-	public void after() throws InterruptedException {		
+	public void after() throws InterruptedException {
+		Thread.sleep(3000);
 		driver.quit();
 	}
 	
@@ -122,6 +123,28 @@ public class WebElementsTest {
 		
 		assertEquals("Item 5", selectAll.get(0).getText());
 		assertEquals("Item 8", selectAll.get(1).getText());
-		assertEquals("Item 9", selectAll.get(2).getText());
+		assertEquals("Item 9", selectAll.get(2).getText());	
+	}
+	
+	@Test
+	public void testIframe() {
+		//Entra no iframe
+		driver.switchTo().frame(0);
+				
+		//identifica o elemento
+		WebElement tfIframe = driver.findElement(By.id("tfiframe"));
+		
+		//Faz a iteração com o elemento
+		tfIframe.sendKeys("Teste do iframe");
+		
+		//Validando o resultado
+		assertEquals("Teste do iframe", tfIframe.getAttribute("value"));
+		
+		//Retorna o foco do driver para o default
+		driver.switchTo().defaultContent();
+		
+		WebElement btnAlert = driver.findElement(By.name("alertbtn"));
+		btnAlert.click();
+		
 	}
 }
