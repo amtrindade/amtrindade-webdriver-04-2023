@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,7 +29,6 @@ public class WebElementsTest {
 
 	@AfterEach
 	public void after() throws InterruptedException {
-		Thread.sleep(3000);
 		driver.quit();
 	}
 	
@@ -144,7 +144,22 @@ public class WebElementsTest {
 		driver.switchTo().defaultContent();
 		
 		WebElement btnAlert = driver.findElement(By.name("alertbtn"));
+		btnAlert.click();		
+	}
+	
+	@Test 
+	public void testAlert() {
+		WebElement btnAlert = driver.findElement(By.name("alertbtn"));
 		btnAlert.click();
+		
+		Alert alertInfo = driver.switchTo().alert();			
+		
+		assertEquals("Eu sou um alerta!", alertInfo.getText());
+		
+		alertInfo.accept();
+		
+		WebElement btnConfirm = driver.findElement(By.name("confirmbtn"));
+		btnConfirm.click();
 		
 	}
 }
