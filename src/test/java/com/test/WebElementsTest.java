@@ -154,8 +154,7 @@ public class WebElementsTest {
 		
 		Alert alertInfo = driver.switchTo().alert();			
 		
-		assertEquals("Eu sou um alerta!", alertInfo.getText());
-		
+		assertEquals("Eu sou um alerta!", alertInfo.getText());		
 		alertInfo.accept();
 		
 		WebElement btnConfirm = driver.findElement(By.name("confirmbtn"));
