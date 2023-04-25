@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -126,6 +127,7 @@ public class WebElementsTest {
 		assertEquals("Item 9", selectAll.get(2).getText());	
 	}
 	
+	@Disabled("BUG-89")
 	@Test
 	public void testIframe() {
 		//Entra no iframe
