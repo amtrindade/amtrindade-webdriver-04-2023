@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class RegularExpressionTest {
+public class RegularExpressionCPFTest {
 	
 	private WebDriver driver;
 	
@@ -23,8 +23,7 @@ public class RegularExpressionTest {
 	}
 
 	@AfterEach
-	public void after() throws InterruptedException {
-		Thread.sleep(3000);
+	public void after() throws InterruptedException {		
 		driver.quit();
 	}
 	
