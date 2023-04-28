@@ -11,6 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CalculadoraTest {
 	
@@ -27,7 +29,7 @@ public class CalculadoraTest {
 	}
 
 	@AfterEach
-	public void after() throws InterruptedException {		
+	public void after() throws InterruptedException {				
 		driver.quit();
 	}
 	
@@ -44,7 +46,8 @@ public class CalculadoraTest {
 		
 		WebElement tfTotal = driver.findElement(By.id("total"));
 		
-		Thread.sleep(5000);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.textToBePresentInElementValue(tfTotal, "68"));
 				
 		assertEquals("68", tfTotal.getAttribute("value"));
 	
