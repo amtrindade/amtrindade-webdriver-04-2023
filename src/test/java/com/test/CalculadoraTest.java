@@ -46,6 +46,7 @@ public class CalculadoraTest {
 		
 		WebElement tfTotal = driver.findElement(By.id("total"));
 		
+		//Espera explícita
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.textToBePresentInElementValue(tfTotal, "68"));
 				
