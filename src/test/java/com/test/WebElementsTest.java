@@ -36,7 +36,7 @@ public class WebElementsTest {
 	@Test
 	public void testValidaNome() throws InterruptedException {
 		//identifica o elemento
-		WebElement tfName = driver.findElement(By.name("txtbox1"));
+		WebElement tfName = driver.findElement(By.xpath("//input[@name='txtbox1']"));
 		
 		//faz a ação no elemento
 		tfName.sendKeys("Hello World");
