@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TableTest {
 	
-private WebDriver driver;
+	private WebDriver driver;
 	
 	@BeforeEach
 	public void before() {
@@ -41,8 +41,4 @@ private WebDriver driver;
 		
 		assertEquals("João Pedro Nascimento", linha2.getText());
 	}
-	
-	
-
-
 }
