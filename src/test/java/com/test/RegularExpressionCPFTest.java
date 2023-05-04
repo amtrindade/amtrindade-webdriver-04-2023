@@ -1,41 +1,32 @@
 package com.test;
 
+import static com.core.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class RegularExpressionCPFTest {
+import com.core.BaseTest;
+
+public class RegularExpressionCPFTest extends BaseTest{
 	
-	private WebDriver driver;
 	
 	@BeforeEach
-	public void before() {
-		System.setProperty("webdriver.chrome.driver", 
-				"/home/atrindade/Dev/drivers/chromedriver");	
-		driver = new ChromeDriver();
-		driver.get("https://www.geradordecpf.org/");
+	public void before() {	
+		getDriver().get("https://www.geradordecpf.org/");
 	}
-
-	@AfterEach
-	public void after() throws InterruptedException {		
-		driver.quit();
-	}
-	
+		
 	@Test
 	public void testGenerateCPFWithDot() {
-		WebElement cbPontos = driver.findElement(By.id("cbPontos"));
+		WebElement cbPontos = getDriver().findElement(By.id("cbPontos"));
 		cbPontos.click();
 		
-		WebElement btnGerar = driver.findElement(By.id("btn-gerar-cpf"));
+		WebElement btnGerar = getDriver().findElement(By.id("btn-gerar-cpf"));
 		btnGerar.click();
 		
-		WebElement tfCPF = driver.findElement(By.id("numero"));		
+		WebElement tfCPF = getDriver().findElement(By.id("numero"));		
 		String cpfGerado = tfCPF.getAttribute("value");
 		
 		System.out.println(cpfGerado);
@@ -45,10 +36,10 @@ public class RegularExpressionCPFTest {
 	
 	@Test
 	public void testGenerateCPFWithoutDot() {
-		WebElement btnGerar = driver.findElement(By.id("btn-gerar-cpf"));
+		WebElement btnGerar = getDriver().findElement(By.id("btn-gerar-cpf"));
 		btnGerar.click();
 		
-		WebElement tfCPF = driver.findElement(By.id("numero"));		
+		WebElement tfCPF = getDriver().findElement(By.id("numero"));		
 		String cpfGerado = tfCPF.getAttribute("value");
 		
 		System.out.println(cpfGerado);

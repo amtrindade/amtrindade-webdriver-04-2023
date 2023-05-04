@@ -1,50 +1,39 @@
 package com.test;
 
+import static com.core.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class RegularExpressionCNPJTest {
+import com.core.BaseTest;
+
+public class RegularExpressionCNPJTest extends BaseTest{
 	
-	private WebDriver driver;
 	
 	@BeforeEach
 	public void before() {
-		System.setProperty("webdriver.chrome.driver", 
-				"/home/atrindade/Dev/drivers/chromedriver");	
-		driver = new ChromeDriver();
-		//wait implicity
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		driver.get("https://www.4devs.com.br/gerador_de_cnpj");
-	}
-
-	@AfterEach
-	public void after() throws InterruptedException {		
-		driver.quit();
+		getDriver().get("https://www.4devs.com.br/gerador_de_cnpj");
 	}
 	
 	@Test
 	public void testValidationCNPJ() throws InterruptedException {
-		WebElement cbSim = driver.findElement(By.id("pontuacao_sim"));
+		WebElement cbSim = getDriver().findElement(By.id("pontuacao_sim"));
 		cbSim.click();
 		
-		WebElement btnGerar = driver.findElement(By.id("bt_gerar_cnpj"));
+		WebElement btnGerar = getDriver().findElement(By.id("bt_gerar_cnpj"));
 		btnGerar.click();
 		
-		WebElement divCNPJ = driver.findElement(By.id("texto_cnpj"));
+		WebElement divCNPJ = getDriver().findElement(By.id("texto_cnpj"));
 		
 		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 		wait.until(ExpectedConditions
 				.invisibilityOfElementWithText(By.id("texto_cnpj"), "Gerando..."));
 				
