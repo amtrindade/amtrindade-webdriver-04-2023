@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
 	
@@ -15,7 +16,7 @@ public class DriverFactory {
 		
 		if (driver == null) {
 			
-			String browser = "chrome-headless";
+			String browser = "firefox-headless";
 			
 			if (browser.equals("chrome")) {					
 				System.setProperty("webdriver.chrome.driver", "/home/atrindade/Dev/drivers/chromedriver");
@@ -30,8 +31,17 @@ public class DriverFactory {
 				options.addArguments("window-size=1200x960");
 				
 				driver = new ChromeDriver(options);
-			}
-			
+			}			
+			else if (browser.equals("firefox-headless")) {
+				System.setProperty("webdriver.geckodriver.driver", "/home/atrindade/Dev/drivers/geckodriver");
+				
+				FirefoxOptions options = new FirefoxOptions();
+				options.addArguments("--headless");
+				options.addArguments("--width=1200");
+				options.addArguments("--height=960");
+				
+				driver = new FirefoxDriver(options);
+			}			
 			else {
 				System.setProperty("webdriver.geckodriver.driver", "/home/atrindade/Dev/drivers/geckodriver");
 				driver = new FirefoxDriver();
