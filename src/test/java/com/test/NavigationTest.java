@@ -18,7 +18,6 @@ public class NavigationTest extends BaseTest{
 	public void setUp() throws Exception {	
 		getDriver().get("http://antoniotrindade.com.br/treinoautomacao/index.html");		
 	}
-	
 
 	@Test
 	public void testNavigationTabs() {
