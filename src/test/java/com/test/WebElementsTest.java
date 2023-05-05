@@ -132,10 +132,7 @@ public class WebElementsTest extends BaseTest{
 		assertEquals("Teste do iframe", tfIframe.getAttribute("value"));
 		
 		//Retorna o foco do driver para o default
-		getDriver().switchTo().defaultContent();
-		
-		WebElement btnAlert = getDriver().findElement(By.name("alertbtn"));
-		btnAlert.click();		
+		getDriver().switchTo().defaultContent();				
 	}
 	
 	@Test 
@@ -147,9 +144,7 @@ public class WebElementsTest extends BaseTest{
 		
 		assertEquals("Eu sou um alerta!", alertInfo.getText());		
 		alertInfo.accept();
-		
-		WebElement btnConfirm = getDriver().findElement(By.name("confirmbtn"));
-		btnConfirm.click();
+				
 		
 	}
 }
