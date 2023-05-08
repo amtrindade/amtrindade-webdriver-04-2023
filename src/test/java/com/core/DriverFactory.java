@@ -16,7 +16,7 @@ public class DriverFactory {
 		
 		if (driver == null) {
 			
-			String browser = "chrome";
+			String browser = "firefox";
 			
 			if (browser.equals("chrome")) {					
 				System.setProperty("webdriver.chrome.driver", "/home/atrindade/Dev/drivers/chromedriver");
