@@ -37,4 +37,12 @@ public class LoginPage {
 		return new MainPage();
 	}
 
+	public String accessValidation() {
+		WebElement btnAccess = getDriver().findElement(By.id("submit_button"));
+		btnAccess.click();
+		
+		WebElement errorMessage = getDriver().findElement(By.xpath("//li[@class='nm-li nm-message-error']"));		
+		return errorMessage.getText();
+	}
+
 }
