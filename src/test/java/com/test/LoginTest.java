@@ -1,5 +1,7 @@
 package com.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 import com.core.BaseTest;
@@ -15,8 +17,13 @@ public class LoginTest extends BaseTest{
 		login.open();
 		login.inputEnvironment("trindade");
 		login.inputUser("aluno01");
+		login.inputPassword("mudarsenha");
 		
 		MainPage main = login.access();
+		
+		main.clickAvatar();
+		
+		assertEquals("Aluno 01 (aluno01)", main.getTextAvatar());		
 	}
 
 }
