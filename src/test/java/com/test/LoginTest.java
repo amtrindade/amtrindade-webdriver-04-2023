@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest{
 		login.open();
 		login.inputEnvironment("trindade");
 		login.inputUser("aluno01");
-		login.inputPassword("mudarsenha");
+		login.inputPassword("123456");
 		
 		MainPage main = login.access();
 		
